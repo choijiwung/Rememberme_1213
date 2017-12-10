@@ -77,7 +77,7 @@ public class LoginActivty extends AppCompatActivity {
                     //DB에 토큰값 받기
                     openDatabase("token.db");
                     createTable();
-                    //insertData(ULoginResult.token.toString().trim());
+                    insertData(ULoginResult.token.toString().trim());
                     //selectData();
 
 
