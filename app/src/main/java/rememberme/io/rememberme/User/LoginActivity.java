@@ -1,6 +1,8 @@
 package rememberme.io.rememberme.User;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     Button loginButton;
     Button SignupButton;
     EditText idText, passwordText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,15 +34,15 @@ public class LoginActivity extends AppCompatActivity {
         network = ApplicationController.getInstance().getApiNetwork();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        idText = (EditText)findViewById(R.id.etId);
-        passwordText = (EditText)findViewById(R.id.etPassword);
+        idText = (EditText) findViewById(R.id.etId);
+        passwordText = (EditText) findViewById(R.id.etPassword);
 
         idText.setText("whdqhd5402@gmail.com");
         passwordText.setText("123123");
 
         loginButton = (Button) findViewById(R.id.btnLogin);
         loginButton.setOnClickListener(new View.OnClickListener() {
-                @Override
+            @Override
             public void onClick(View v) {
                 String email = idText.getText().toString();
                 String password = passwordText.getText().toString();
@@ -54,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent signupIntent = new Intent(getApplicationContext(),SignupActivity.class);
+                Intent signupIntent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(signupIntent);
             }
         });
@@ -67,16 +70,25 @@ public class LoginActivity extends AppCompatActivity {
         LoginResultCall.enqueue(new Callback<ULoginResult>() {
             @Override
             public void onResponse(Call<ULoginResult> call, Response<ULoginResult> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     ULoginResult ULoginResult = response.body();
                     Log.i("Sign", "Login Success / msg : ".concat(ULoginResult.msg).concat(", token : ".concat(ULoginResult.token)));
 
+<<<<<<< HEAD:app/src/main/java/rememberme/io/rememberme/User/LoginActivity.java
                     // 받은 토큰 디비에 저장 저장 - 동우
 //                    TokenDatabase tokenDatabase = new TokenDatabase();
 //                    tokenDatabase.openDatabase();
 //                    tokenDatabase.createTable();
 //                    tokenDatabase.insertToken(ULoginResult.token.toString().trim());
 //                    tokenDatabase.selectToken(ULoginResult.token.toString().trim());
+=======
+                    //DB에 토큰값 받기
+                    openDatabase("token.db");
+                    createTable();
+                    insertData(ULoginResult.token.toString().trim());
+                    //selectData();
+
+>>>>>>> 08910dc1df24dabfa0ff4e9672ab0873e624811f:app/src/main/java/rememberme/io/rememberme/User/LoginActivty.java
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);
@@ -94,4 +106,51 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+    // DB 관리하기 위한 메소드
+    String tableName = "tokenTable";
+    SQLiteDatabase db;
+
+    public void openDatabase(String dbName) {
+        db = openOrCreateDatabase(dbName, MODE_PRIVATE, null);
+        if (db != null) {
+            Log.d("DB", "DB오픈됨");
+        }
+    }
+
+
+    public void createTable() {
+        if (db != null) {
+            String sql = "create table if not exists " + tableName + " (token text) ";
+            db.execSQL(sql);
+            Log.d("DB", "테이블 생성됨");
+        } else {
+            Log.d("DB", "DB를 먼저 오픈하세요");
+        }
+    }
+
+    public void insertData(String token) {
+        if (db != null) {
+            String sql = "insert into " + tableName + "(token) values(" + token + ")";
+            db.execSQL(sql);
+            Log.d("DB", "DB에 추가함");
+        } else {
+            Log.d("DB", "DB 생성이 안됨");
+        }
+    }
+
+    public void selectData() {
+        if (db != null) {
+            String sql = "select token from " + tableName; //" where token = " + token.trim();
+            Cursor selectToken = db.rawQuery(sql, null); // 조회된 토큰이 Cursor 객체로 리턴됨.
+
+            for (int i = 0; i < selectToken.getCount(); i++) {
+                selectToken.moveToNext();
+                String receviedToken = selectToken.getString(0);
+                Log.d("DB", receviedToken);
+            }
+        }
+    }
 }
+
+
