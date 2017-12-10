@@ -6,4 +6,5 @@ package rememberme.io.rememberme.User.Results;
 
 public class USignUpResult {
     public String msg;
+    public String token;
 }
