@@ -19,11 +19,11 @@ import retrofit2.Response;
 
 public class SignupActivity extends AppCompatActivity {
     APINetwork network;
-    EditText etName,etEmail,etPassword,etPasswordConfirm;
+    EditText etName, etEmail, etPassword, etPasswordConfirm;
     Button signCompleteButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
 
 
         super.onCreate(savedInstanceState);
@@ -34,10 +34,9 @@ public class SignupActivity extends AppCompatActivity {
         etName = (EditText) findViewById(R.id.etName);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        etPasswordConfirm = (EditText)findViewById(R.id.etPasswordConfirm);
+        etPasswordConfirm = (EditText) findViewById(R.id.etPasswordConfirm);
 
         signCompleteButton = (Button) findViewById(R.id.btnSignup);
-
 
 
         signCompleteButton.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +49,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 Log.i("Sign", name.concat(" / ").concat(email).concat(" / ").concat(password).concat(" / ").concat(passwordConfirm));
 
-                signup(name,email,password,passwordConfirm);
+                signup(name, email, password, passwordConfirm);
 
             }
         });
@@ -58,16 +57,16 @@ public class SignupActivity extends AppCompatActivity {
     }
 
     private void signup(String name, String email, String password, String passwordConfirm) {
-        User user = new User(name,email,password,passwordConfirm);
-        Call<USignUpResult> SignupResultCall = network.getSignUpResult(user);
-        SignupResultCall.enqueue(new Callback<USignUpResult>() {
+        User user = new User(name, email, password, passwordConfirm);
+        Call<USignUpResult> SignUpResultCall = network.getSignUpResult(user);
+        SignUpResultCall.enqueue(new Callback<USignUpResult>() {
             @Override
             public void onResponse(Call<USignUpResult> call, Response<USignUpResult> response) {
                 if (response.isSuccessful()) {
-                    USignUpResult signupResult = response.body();
-                    Log.i("Sign", "Login Success / msg:".concat(signupResult.msg));
+                    USignUpResult signUpResult = response.body();
+                    Log.i("Sign", "SignUp Success / msg:".concat(signUpResult.msg));
 
-                    Intent signComplete = new Intent(getApplicationContext(), LoginActivty.class);
+                    Intent signComplete = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(signComplete);
                 } else {
                     Toast.makeText(SignupActivity.this, "아이디와 비밀번호를 확인해주세요", Toast.LENGTH_SHORT).show();
@@ -80,7 +79,6 @@ public class SignupActivity extends AppCompatActivity {
                 Log.i("Sign", t.getMessage());
             }
         });
-
 
 
     }
