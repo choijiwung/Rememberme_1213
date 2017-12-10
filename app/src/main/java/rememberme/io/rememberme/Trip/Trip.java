@@ -7,6 +7,7 @@ import java.util.Date;
  */
 
 public class Trip {
+    private int id;
     private String title;
     private String description;
     private String region;

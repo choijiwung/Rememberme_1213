@@ -14,7 +14,7 @@ import rememberme.io.rememberme.MainActivity;
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.R;
-import rememberme.io.rememberme.User.Results.LoginResult;
+import rememberme.io.rememberme.User.Results.ULoginResult;
 import rememberme.io.rememberme.User.Results.TokenDatabase;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -64,18 +64,18 @@ public class LoginActivty extends AppCompatActivity {
 
     private void login(String email, String password) {
         User user = new User(email, password);
-        Call<LoginResult> LoginResultCall = network.getLoginResult(user);
-        LoginResultCall.enqueue(new Callback<LoginResult>() {
+        Call<ULoginResult> LoginResultCall = network.getLoginResult(user);
+        LoginResultCall.enqueue(new Callback<ULoginResult>() {
             @Override
-            public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+            public void onResponse(Call<ULoginResult> call, Response<ULoginResult> response) {
                 if(response.isSuccessful()) {
-                    LoginResult loginResult = response.body();
-                    Log.i("Sign", "Login Success / msg : ".concat(loginResult.msg).concat(", token : ".concat(loginResult.token)));
+                    ULoginResult ULoginResult = response.body();
+                    Log.i("Sign", "Login Success / msg : ".concat(ULoginResult.msg).concat(", token : ".concat(ULoginResult.token)));
 
                     // 받은 토큰 디비에 저장 저장 - 동우
                     TokenDatabase tokenDatabase = new TokenDatabase();
 
-                    tokenDatabase.insertToken(loginResult.token.toString().trim());
+                    tokenDatabase.insertToken(ULoginResult.token.toString().trim());
 
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
@@ -88,7 +88,7 @@ public class LoginActivty extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<LoginResult> call, Throwable t) {
+            public void onFailure(Call<ULoginResult> call, Throwable t) {
                 Log.i("Sign", t.getMessage());
             }
         });

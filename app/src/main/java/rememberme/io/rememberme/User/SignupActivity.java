@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.R;
-import rememberme.io.rememberme.User.Results.SignUpResult;
+import rememberme.io.rememberme.User.Results.USignUpResult;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,12 +59,12 @@ public class SignupActivity extends AppCompatActivity {
 
     private void signup(String name, String email, String password, String passwordConfirm) {
         User user = new User(name,email,password,passwordConfirm);
-        Call<SignUpResult> SignupResultCall = network.getSignUpResult(user);
-        SignupResultCall.enqueue(new Callback<SignUpResult>() {
+        Call<USignUpResult> SignupResultCall = network.getSignUpResult(user);
+        SignupResultCall.enqueue(new Callback<USignUpResult>() {
             @Override
-            public void onResponse(Call<SignUpResult> call, Response<SignUpResult> response) {
+            public void onResponse(Call<USignUpResult> call, Response<USignUpResult> response) {
                 if (response.isSuccessful()) {
-                    SignUpResult signupResult = response.body();
+                    USignUpResult signupResult = response.body();
                     Log.i("Sign", "Login Success / msg:".concat(signupResult.msg));
 
                     Intent signComplete = new Intent(getApplicationContext(), LoginActivty.class);
@@ -76,7 +76,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<SignUpResult> call, Throwable t) {
+            public void onFailure(Call<USignUpResult> call, Throwable t) {
                 Log.i("Sign", t.getMessage());
             }
         });
