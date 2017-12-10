@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#002743de</color>
+    <color name="colorPrimaryDark">#00ffff</color>
+    <color name="colorAccent">#00416a</color>
+
+    <!--<color name="tapTextColor">#A9A9A9</color> &lt;!&ndash;drakgray&ndash;&gt;-->
+    <!--<color name="tapTextSelectedColor">#000000</color> &lt;!&ndash;black&ndash;&gt;-->
+
+</resources>
