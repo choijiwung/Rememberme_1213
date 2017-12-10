@@ -98,7 +98,7 @@
                 android:textSize="18sp" />
 
             <Button
-                android:id="@+id/endDay"
+                android:id="@+id/btnendDay"
                 android:layout_width="wrap_content"
                 android:layout_height="26dp"
                 android:layout_marginTop="10dp"

@@ -33,6 +33,7 @@ public class SignupActivity extends AppCompatActivity {
         network = ApplicationController.getInstance().getApiNetwork();
 
         setContentView(R.layout.activity_signup);
+
         etName = (EditText) findViewById(R.id.etName);
         etEmail = (EditText) findViewById(R.id.etEmail);
         etPassword = (EditText) findViewById(R.id.etPassword);
