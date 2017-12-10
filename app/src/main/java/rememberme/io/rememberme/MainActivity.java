@@ -8,8 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
-    MainFragment_Left_CurrentTrip mainFragmentLeftCurrentTrip;
-    MainFragment_Right_TripList mainFragmentRightTripList;
+    LeftMainFragment mainFragmentLeftCurrentTrip;
+    RightMainFragment mainFragmentRightTripList;
     Toolbar toolbar;
 
     @Override
@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
 //        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼, 디폴트로 true만 해도 백버튼이 생김
 //        actionBar.setHomeAsUpIndicator(R.drawable.logo); //뒤로가기 버튼을 본인이 만든 아이콘으로 하기 위해 필요
 
-        mainFragmentLeftCurrentTrip = new MainFragment_Left_CurrentTrip();
-        mainFragmentRightTripList = new MainFragment_Right_TripList();
+        mainFragmentLeftCurrentTrip = new LeftMainFragment();
+        mainFragmentRightTripList = new RightMainFragment();
 
 
         getSupportFragmentManager().beginTransaction().add(R.id.main_container, mainFragmentLeftCurrentTrip).commit();

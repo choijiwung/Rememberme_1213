@@ -11,7 +11,7 @@ import android.view.ViewGroup;
  * Created by samsung on 2017-11-17.
  */
 // 현재여행 탭 뷰
-public class MainFragment_Left_CurrentTrip extends Fragment {
+public class LeftMainFragment extends Fragment {
 
     @Nullable
     @Override

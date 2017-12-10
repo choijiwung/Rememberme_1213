@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
  * Created by samsung on 2017-11-17.
  */
 // 여행목록 탭
-public class MainFragment_Right_TripList extends Fragment {
+public class RightMainFragment extends Fragment {
 
     MainActivity mainActivity;
 

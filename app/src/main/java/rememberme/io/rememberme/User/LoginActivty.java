@@ -77,7 +77,7 @@ public class LoginActivty extends AppCompatActivity {
                     tokenDatabase.openDatabase();
                     tokenDatabase.createTable();
                     tokenDatabase.insertToken(ULoginResult.token.toString().trim());
-                    //tokenDatabase.selectToken(ULoginResult.token.toString().trim());
+                    tokenDatabase.selectToken(ULoginResult.token.toString().trim());
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);

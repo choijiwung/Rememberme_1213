@@ -14,7 +14,7 @@ public class ApplicationController extends Application {
     private static ApplicationController instance;
     private final int PORT = 3000;
 //    private final String URL = "http://70.12.50.58".concat(":"+PORT);
-    private final String URL = "http://13.230.9.160".concat(":"+PORT);
+    private final String URL = "http://13.230.9.160";
 
     public static ApplicationController getInstance() {
         return instance;

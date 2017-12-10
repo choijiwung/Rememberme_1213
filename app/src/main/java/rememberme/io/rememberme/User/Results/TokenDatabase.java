@@ -1,6 +1,5 @@
 package rememberme.io.rememberme.User.Results;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +15,7 @@ public class TokenDatabase extends AppCompatActivity {
     //database 생성
     public void openDatabase() {
         String databaseName = "tokenDatabase";
-        SQLiteDatabase tokenDatabase = openOrCreateDatabase(databaseName, Context.MODE_PRIVATE, null);
+        SQLiteDatabase tokenDatabase = openOrCreateDatabase(databaseName, MODE_PRIVATE, null);
         if (tokenDatabase != null) {
             //println("데이터베이스 오픈됨");
         }
@@ -53,7 +52,6 @@ public class TokenDatabase extends AppCompatActivity {
                 selectToken.moveToNext();
                 String receviedToken = selectToken.getString(0);
                 Toast.makeText(getApplicationContext(), receviedToken, Toast.LENGTH_LONG).show();
-
             }
         }
     }
