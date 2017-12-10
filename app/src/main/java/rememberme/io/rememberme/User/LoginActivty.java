@@ -74,9 +74,10 @@ public class LoginActivty extends AppCompatActivity {
 
                     // 받은 토큰 디비에 저장 저장 - 동우
                     TokenDatabase tokenDatabase = new TokenDatabase();
-
+                    tokenDatabase.openDatabase();
+                    tokenDatabase.createTable();
                     tokenDatabase.insertToken(ULoginResult.token.toString().trim());
-
+                    //tokenDatabase.selectToken(ULoginResult.token.toString().trim());
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);

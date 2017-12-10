@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -69,11 +68,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    //툴바에 메뉴 활성화
-      public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
+//    //툴바에 메뉴 활성화
+//      public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
 
 }

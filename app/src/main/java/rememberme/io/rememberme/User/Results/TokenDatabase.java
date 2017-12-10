@@ -4,6 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 /**
  * Created by samsung on 2017-12-10.
@@ -46,11 +47,17 @@ public class TokenDatabase extends AppCompatActivity {
     public void selectToken(String token) {
         if (tokenDatabase != null) {
             String sql = "select token from tokenTable where token = " + token.trim();
-            Cursor selectToken = tokenDatabase.rawQuery(sql,null); // 조회된 토큰이 Cursor 객체로 리턴됨.
-        } else{
-            //println("데이터베이스를 먼저 오픈하세요");
+            Cursor selectToken = tokenDatabase.rawQuery(sql, null); // 조회된 토큰이 Cursor 객체로 리턴됨.
+
+            for (int i = 0; i < selectToken.getCount(); i++) {
+                selectToken.moveToNext();
+                String receviedToken = selectToken.getString(0);
+                Toast.makeText(getApplicationContext(), receviedToken, Toast.LENGTH_LONG).show();
+
+            }
         }
     }
+
 
     //token 업데이트
     //매개변수 oldToken, String newToken 값을  통해 oldToken => newToken으로 갱신
