@@ -5,4 +5,5 @@ package rememberme.io.rememberme.Spot;
  */
 
 public class Spot {
+
 }

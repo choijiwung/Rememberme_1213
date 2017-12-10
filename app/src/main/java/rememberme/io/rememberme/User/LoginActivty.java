@@ -15,6 +15,7 @@ import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.R;
 import rememberme.io.rememberme.User.Results.LoginResult;
+import rememberme.io.rememberme.User.Results.TokenDatabase;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -70,6 +71,12 @@ public class LoginActivty extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     LoginResult loginResult = response.body();
                     Log.i("Sign", "Login Success / msg : ".concat(loginResult.msg).concat(", token : ".concat(loginResult.token)));
+
+                    // 받은 토큰 디비에 저장 저장 - 동우
+                    TokenDatabase tokenDatabase = new TokenDatabase();
+
+                    tokenDatabase.insertToken(loginResult.token.toString().trim());
+
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);
