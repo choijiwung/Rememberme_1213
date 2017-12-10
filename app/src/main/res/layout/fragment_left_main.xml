@@ -1,10 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:orientation="vertical"
+
+    android:weightSum="1">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.35"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="?android:attr/editTextBackground"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:hint="여행제목"
+            android:inputType="textPersonName"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="9dp"
+                android:layout_weight="2.22"
+                android:background="?android:attr/editTextBackground"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:hint="N일차"
+                android:textColor="@android:color/darker_gray"
+                android:textColorHint="@android:color/darker_gray" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="206dp"
+        android:background="@mipmap/trip_background" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.18"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:text="메모" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/textView10"
+
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_weight="0.44"
+            android:background="@mipmap/blue_postit_blank"
+            android:elegantTextHeight="true"
+            android:gravity="center"
+            android:hint="여행에대한설명"
+            android:text="다음주에 밥먹고"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
+    </RelativeLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:backgroundTint="@color/colorAccent"
+        android:layout_marginRight="15dp"
+        android:src="@android:drawable/ic_menu_camera" />
 
 
 </LinearLayout>
