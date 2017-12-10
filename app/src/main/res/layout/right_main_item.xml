@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="315dp"
+    android:layout_marginLeft="29.5dp"
+    android:layout_marginRight="29.5dp"
+    android:layout_marginTop="21dp">
+
+    <ImageView
+        android:id="@+id/right_main_item_image"
+        android:layout_width="match_parent"
+        android:layout_height="212dp" />
+
+    <TextView
+        android:id="@+id/right_main_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/right_main_item_image"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="24dp"
+        tools:text="barcelona" />
+
+    <TextView
+        android:id="@+id/right_main_item_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/right_main_item_title"
+        android:layout_marginTop="6.75dp"
+        android:gravity="center"
+        android:textSize="14dp"
+        tools:text="2016.07.08 ~ 2016.07.20" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="5dp"
+        android:layout_below="@+id/right_main_item_schedule"
+        android:layout_centerHorizontal="true"
+        android:background="#00bbdc" />
+
+</RelativeLayout>

@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import rememberme.io.rememberme.MainActivity;
+import rememberme.io.rememberme.Main.MainActivity;
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.R;
@@ -21,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivty extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     APINetwork network;
     Button loginButton;
     Button SignupButton;
@@ -74,18 +74,27 @@ public class LoginActivty extends AppCompatActivity {
                     ULoginResult ULoginResult = response.body();
                     Log.i("Sign", "Login Success / msg : ".concat(ULoginResult.msg).concat(", token : ".concat(ULoginResult.token)));
 
+<<<<<<< HEAD:app/src/main/java/rememberme/io/rememberme/User/LoginActivity.java
+                    // 받은 토큰 디비에 저장 저장 - 동우
+//                    TokenDatabase tokenDatabase = new TokenDatabase();
+//                    tokenDatabase.openDatabase();
+//                    tokenDatabase.createTable();
+//                    tokenDatabase.insertToken(ULoginResult.token.toString().trim());
+//                    tokenDatabase.selectToken(ULoginResult.token.toString().trim());
+=======
                     //DB에 토큰값 받기
                     openDatabase("token.db");
                     createTable();
-                    //insertData(ULoginResult.token.toString().trim());
+                    insertData(ULoginResult.token.toString().trim());
                     //selectData();
 
+>>>>>>> 08910dc1df24dabfa0ff4e9672ab0873e624811f:app/src/main/java/rememberme/io/rememberme/User/LoginActivty.java
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);
                     finish();
                 } else {
-                    Toast.makeText(LoginActivty.this, "아이디와 비밀번호를 확인해 주세요.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해 주세요.", Toast.LENGTH_SHORT).show();
                     Log.i("Sign", "code : " + response.code());
                 }
             }
