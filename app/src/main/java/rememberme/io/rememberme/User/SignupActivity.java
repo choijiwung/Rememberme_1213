@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         network = ApplicationController.getInstance().getApiNetwork();
-        
+
         setContentView(R.layout.activity_signup);
         etName = (EditText) findViewById(R.id.etName);
         etEmail = (EditText) findViewById(R.id.etEmail);

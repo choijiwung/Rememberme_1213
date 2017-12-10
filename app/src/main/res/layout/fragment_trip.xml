@@ -163,7 +163,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnsendTrip"
+            android:id="@+id/btnTrip"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="25dp"
