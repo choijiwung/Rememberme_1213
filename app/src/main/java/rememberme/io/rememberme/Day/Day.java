@@ -5,4 +5,6 @@ package rememberme.io.rememberme.Day;
  */
 
 public class Day {
+    int id;
+
 }
