@@ -24,12 +24,16 @@ public class RightMainAdapter extends RecyclerView.Adapter<RightMainVH> {
         this.arrayList.addAll(arrayList);
     }
 
+
+    // 인플레이터 하고
     @Override
     public RightMainVH onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.right_main_item, parent, false);
         return new RightMainVH(view);
     }
 
+
+    // 가지고 있다.
     @Override
     public void onBindViewHolder(RightMainVH holder, int position) {
         holder.image.setImageResource(arrayList.get(position).image);
