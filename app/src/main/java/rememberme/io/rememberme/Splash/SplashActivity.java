@@ -1,10 +1,11 @@
-package rememberme.io.rememberme;
+package rememberme.io.rememberme.Splash;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import rememberme.io.rememberme.R;
 import rememberme.io.rememberme.User.LoginActivity;
 
 public class SplashActivity extends AppCompatActivity {
