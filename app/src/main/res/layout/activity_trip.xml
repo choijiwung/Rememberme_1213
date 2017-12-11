@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:layout_height="match_parent">
+
     <FrameLayout
-        android:id="@+id/addTitle_container"
+        android:id="@+id/trip_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
+        android:layout_height="match_parent"></FrameLayout>
     <!--DayList추가-->
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <FrameLayout
-            android:id="@+id/addDayList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFFFFF">
-        </FrameLayout>
-    </ScrollView>
     <FrameLayout
-        android:id="@+id/addCalender"
+        android:id="@+id/trip_calendar"
         android:layout_width="300dp"
         android:layout_height="400dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:layout_gravity="center_horizontal|center_vertical"
         android:visibility="visible"
         tools:layout_editor_absoluteX="42dp"
-        tools:layout_editor_absoluteY="84dp"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-    </FrameLayout>
+        tools:layout_editor_absoluteY="84dp"></FrameLayout>
 </RelativeLayout>

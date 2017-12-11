@@ -1,5 +1,6 @@
 package rememberme.io.rememberme.Main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -9,11 +10,11 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import rememberme.io.rememberme.R;
+import rememberme.io.rememberme.Trip.TripActivity;
 
 /**
  * Created by samsung on 2017-11-17.
@@ -34,7 +35,8 @@ public class RightMainFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                // Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), TripActivity.class));
             }
         });
 
