@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new MainPagerAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
+        adapter = new MainPagerAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

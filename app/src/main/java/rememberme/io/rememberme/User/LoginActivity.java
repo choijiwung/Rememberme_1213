@@ -73,9 +73,9 @@ public class LoginActivity extends AppCompatActivity {
                     ULoginResult ULoginResult = response.body();
                     Log.i("Sign", "Login Success / msg : ".concat(ULoginResult.msg).concat(", token : ".concat(ULoginResult.token)));
 
-                    Token token = new Token();
+                    //토큰 값 받아서 저장
+                    Token token = new Token(LoginActivity.this);
                     token.setKey(ULoginResult.token);
-
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);
                     finish();
