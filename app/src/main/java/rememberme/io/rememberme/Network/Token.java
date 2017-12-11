@@ -5,4 +5,5 @@ package rememberme.io.rememberme.Network;
  */
 
 public class Token {
+    String key;
 }

@@ -34,13 +34,13 @@ public class LoginActivity extends AppCompatActivity {
         network = ApplicationController.getInstance().getApiNetwork();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        idText = (EditText) findViewById(R.id.etId);
-        passwordText = (EditText) findViewById(R.id.etPassword);
+        idText = (EditText) findViewById(R.id.login_id);
+        passwordText = (EditText) findViewById(R.id.login_password);
 
         idText.setText("whdqhd5402@gmail.com");
         passwordText.setText("123123");
 
-        loginButton = (Button) findViewById(R.id.btnLogin);
+        loginButton = (Button) findViewById(R.id.login_btn);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        SignupButton = (Button) findViewById(R.id.btnSignup);
+        SignupButton = (Button) findViewById(R.id.login_signup_btn);
         SignupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,16 +75,16 @@ public class LoginActivity extends AppCompatActivity {
                     Log.i("Sign", "Login Success / msg : ".concat(ULoginResult.msg).concat(", token : ".concat(ULoginResult.token)));
 
                     // 받은 토큰 디비에 저장 저장 - 동우
-//                    TokenDatabase tokenDatabase = new TokenDatabase();
-//                    tokenDatabase.openDatabase();
-//                    tokenDatabase.createTable();
-//                    tokenDatabase.insertToken(ULoginResult.token.toString().trim());
-//                    tokenDatabase.selectToken(ULoginResult.token.toString().trim());
+                    /* TokenDatabase tokenDatabase = new TokenDatabase();
+                    tokenDatabase.openDatabase();
+                    tokenDatabase.createTable();
+                    tokenDatabase.insertToken(ULoginResult.token.toString().trim());
+                    tokenDatabase.selectToken(ULoginResult.token.toString().trim());*/
 
-                    //DB에 토큰값 받기
-                    openDatabase("token.db");
+                    // DB에 토큰값 받기
+                    /* openDatabase("token.db");
                     createTable();
-                    insertData(ULoginResult.token.toString().trim());
+                    insertData(ULoginResult.token.toString().trim());*/
                     //selectData();
 
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);

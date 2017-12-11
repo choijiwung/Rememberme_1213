@@ -1,67 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/left_main_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0.35"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:weightSum="1">
-
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/left_main_day_seq"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="?android:attr/editTextBackground"
             android:backgroundTint="@color/colorPrimaryDark"
             android:gravity="center"
-            android:hint="여행제목"
-            android:inputType="textPersonName"
             android:textColor="@android:color/darker_gray"
-            android:textColorHint="@android:color/darker_gray" />
+            tools:text="1일차" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/left_main_spot"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:weightSum="1">
+            android:layout_gravity="center"
+            android:layout_marginTop="9dp"
+            android:background="?android:attr/editTextBackground"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:textColor="@android:color/darker_gray"
+            android:textColorHint="@android:color/darker_gray"
+            tools:text="1번째 장소" />
 
-            <TextView
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="9dp"
-                android:layout_weight="2.22"
-                android:background="?android:attr/editTextBackground"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:gravity="center"
-                android:hint="N일차"
-                android:textColor="@android:color/darker_gray"
-                android:textColorHint="@android:color/darker_gray" />
-
-
-        </LinearLayout>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/left_main_spot_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="206dp"
-        android:background="@mipmap/list_background" />
+        android:layout_below="@+id/left_main_title" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.18"
-        android:orientation="horizontal">
+        android:layout_below="@+id/frameLayout">
 
         <TextView
             android:id="@+id/textView10"
@@ -79,24 +68,25 @@
             android:layout_gravity="bottom"
             android:layout_marginLeft="25dp"
             android:layout_marginRight="25dp"
-            android:layout_weight="0.44"
             android:background="@color/colorAccent"
             android:elegantTextHeight="true"
             android:gravity="center"
             android:hint="여행에대한설명"
             android:text="다음주에 밥먹고"
-            android:textColor="@android:color/white"
+            android:textColor="@color/colorWhite"
             android:textSize="15sp" />
     </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/left_main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:backgroundTint="@color/colorAccent"
-        android:layout_marginRight="15dp"
-        android:src="@android:drawable/ic_menu_camera" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="29.5dp"
+        android:layout_marginRight="29.5dp"
+        android:backgroundTint="@color/colorFab"
+        android:src="@drawable/ic_photo_camera_black_24dp" />
 
 
-</LinearLayout>
+</RelativeLayout>
