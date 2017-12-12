@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     token.setKey(ULoginResult.token);
                     Intent loginIntent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(loginIntent);
+                    Log.i("Main", token.getKey());
                     finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "아이디와 비밀번호를 확인해 주세요.", Toast.LENGTH_SHORT).show();

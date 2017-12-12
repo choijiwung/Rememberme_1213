@@ -1,17 +1,20 @@
 package rememberme.io.rememberme.Main;
 
 import android.content.Context;
+import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.util.Log;
+
+import java.io.IOException;
+import java.util.concurrent.ExecutionException;
 
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.Network.Token;
 import rememberme.io.rememberme.Trip.Results.TIndexResult;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 /**
  * Created by jongbong on 2017. 12. 11..
@@ -32,39 +35,30 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     }
 
     @Override
-    public Fragment getItem(int position) {
-        // 탭 위치에 따라서 인플레이터
+    public synchronized Fragment getItem(int position) {
+        Log.i("Main", "start inflate tab fragment");
         switch (position) {
             case 0:
+                Log.i("Main", "LeftPage inflate");
                 LeftMainFragment leftMainFragment = new LeftMainFragment();
                 return leftMainFragment;
             case 1:
-                // 0일때하고 아닐때 구분해서 return 구분해서 하기.
+                Log.i("Main", "RightPage inflate");
+                changeRightPage();
+                Log.i("Main", "before check size : " + size);
 
-                Token token = new Token(context); // 토큰 객체 생성
-                Call<TIndexResult> tIndexResultCall = network.getTIndexResult(token.getKey()); //가져온 토큰을 네트워크에 보내서 다시 받는다.
-                tIndexResultCall.enqueue(new Callback<TIndexResult>() { // 받아온 토큰을 바탕으로 콜백메소드 생성후
-                    @Override
-                    public void onResponse(Call<TIndexResult> call, Response<TIndexResult> response) {
-                        TIndexResult result = response.body();
-                        size = result.arrayList.size(); // 결과물의 size 여기서는 trip 사이즈를 알고,
-                    }
-
-                    @Override
-                    public void onFailure(Call<TIndexResult> call, Throwable t) {
-                    }
-                });
-
-                if (size != 0) { // trip의 사이즈가 0이 아니라면
+                if (size != 0) {
                     RightMainFragment rightMainFragment = new RightMainFragment();
                     return rightMainFragment;
-                } else { // trip의 사이즈가 0이면
+                } else {
                     RightMainNoFragment rightMainNoFragment = new RightMainNoFragment();
                     return rightMainNoFragment;
                 }
+
             default:
                 return null;
         }
+
     }
 
     @Override
@@ -77,4 +71,67 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
         return super.getItemPosition(object);
     }
 
+    public void changeRightPage() {
+        Log.i("Main", "start changeRightPage");
+        Token token = new Token(context);
+        final Call<TIndexResult> tIndexResultCall = network.getTIndexResult(token.getKey()); //가져온 토큰을 네트워크에 보내서 다시 받는다.
+        Log.i("Main", "start sync network");
+
+        try {
+            size = new Network().execute(tIndexResultCall).get().result.size();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        /*new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    TIndexResult tIndexResult = tIndexResultCall.execute().body();
+                    size = tIndexResult.result.size();
+                    Log.i("Main", "thread size : " + size);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });*/
+
+        /*tIndexResultCall.enqueue(new Callback<TIndexResult>() {
+            @Override
+            public void onResponse(Call<TIndexResult> call, Response<TIndexResult> response) {
+                Log.i("Main", "Success");
+                TIndexResult tIndexResult = response.body();
+                size = tIndexResult.result.size();
+                Log.i("Main", "thread size : " + size);
+            }
+
+            @Override
+            public void onFailure(Call<TIndexResult> call, Throwable t) {
+                Log.i("Main", "fail : " + t.getMessage());
+            }
+        });*/
+
+        Log.i("Main", "end of network");
+    }
+
+    private class Network extends AsyncTask<Call, Void, TIndexResult> {
+        @Override
+        protected TIndexResult doInBackground(Call... calls) {
+            try {
+                Call<TIndexResult> tIndexResultCall = calls[0];
+                return tIndexResultCall.execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(TIndexResult tIndexResult) {
+            size = tIndexResult.result.size();
+            Log.i("Main", "before end network size : " + size);
+        }
+    }
 }

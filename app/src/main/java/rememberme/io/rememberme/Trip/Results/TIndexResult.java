@@ -10,5 +10,9 @@ import rememberme.io.rememberme.Trip.Trip;
 
 public class TIndexResult {
     public String msg;
-    public ArrayList<Trip> arrayList = new ArrayList<>();
+    public ArrayList<Trip> result;
+
+    public class ResultData {
+        public ArrayList<Trip> trips;
+    }
 }

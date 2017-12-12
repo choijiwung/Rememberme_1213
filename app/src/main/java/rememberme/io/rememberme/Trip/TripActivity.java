@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -103,17 +104,18 @@ public class TripActivity extends AppCompatActivity {
                 // network success
                 if (response.isSuccessful()) {
                     // work success
-
-
+                    Log.i("Trip", "code : " + response.code());
                     finish();
                 } else {
                     // work fail
+                    Log.i("Trip", "code : " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<TCreateResult> call, Throwable t) {
                 // network fail
+                Log.i("Trip", t.getMessage());
             }
         });
     }

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
 
 import rememberme.io.rememberme.R;
 
@@ -43,14 +45,16 @@ public class MainActivity extends AppCompatActivity {
         });
 
         adapter = new MainPagerAdapter(this, getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setOffscreenPageLimit(2);
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(2);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        adapter.getItem(1);
+        Toast.makeText(this, "onResume Start", Toast.LENGTH_SHORT).show();
+        adapter.notifyDataSetChanged();
+        Log.i("Main", "resume check size : " + adapter.size);
     }
 }
