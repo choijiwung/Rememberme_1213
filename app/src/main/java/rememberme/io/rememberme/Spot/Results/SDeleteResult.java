@@ -5,4 +5,5 @@ package rememberme.io.rememberme.Spot.Results;
  */
 
 public class SDeleteResult {
+    public String msg;
 }

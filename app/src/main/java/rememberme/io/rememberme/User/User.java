@@ -6,6 +6,8 @@ package rememberme.io.rememberme.User;
 
 public class User {
 
+    private String uid;
+    private String provider;
     private String name;
     private String email;
     private String password;
@@ -16,11 +18,13 @@ public class User {
         this.password = password;
     }
 
-    public User(String name, String email, String password, String passwordConfirmation) {
+    public User(String name, String email, String password, String passwordConfirmation, String uid, String provider) {
         this.name = name;
         this.email = email;
         this.password = password;
         this.passwordConfirmation = passwordConfirmation;
+        this.uid = uid;
+        this.provider = provider;
     }
 
     public String getName() {
@@ -53,5 +57,21 @@ public class User {
 
     public void setPasswordConfirmation(String passwordConfirmation) {
         this.passwordConfirmation = passwordConfirmation;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getProvider() {
+        return provider;
+    }
+
+    public void setProvider(String provider) {
+        this.provider = provider;
     }
 }

@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"></FrameLayout>
     <!--DayList추가-->
+
     <FrameLayout
         android:id="@+id/trip_calendar"
         android:layout_width="300dp"

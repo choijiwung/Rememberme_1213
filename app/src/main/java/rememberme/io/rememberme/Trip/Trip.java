@@ -12,6 +12,7 @@ public class Trip {
     private String description;
     private String region;
     private Date start;
+    private Date end;
 
     public int getTid() {
         return tid;
@@ -60,6 +61,4 @@ public class Trip {
     public void setEnd(Date end) {
         this.end = end;
     }
-
-    private Date end;
 }

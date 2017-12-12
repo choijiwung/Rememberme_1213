@@ -5,4 +5,5 @@ package rememberme.io.rememberme.Trip.Results;
  */
 
 public class TCreateResult {
+    public String msg;
 }

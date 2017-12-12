@@ -5,4 +5,5 @@ package rememberme.io.rememberme.Day.Results;
  */
 
 public class DCreateResult {
+    public String msg;
 }

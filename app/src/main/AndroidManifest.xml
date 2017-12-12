@@ -23,7 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Trip.TripActivity"></activity>
+        <activity android:name=".Trip.TripActivity" />
+        <activity android:name=".Trip.TripCalendarActivity" />
+        <activity android:name=".Day.DayActivity" />
+        <activity android:name=".Spot.SpotActivity"></activity>
     </application>
 
 </manifest>

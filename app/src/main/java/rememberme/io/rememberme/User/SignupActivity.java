@@ -52,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 Log.i("Sign", name.concat(" / ").concat(email).concat(" / ").concat(password).concat(" / ").concat(passwordConfirmation));
 
-                signup(name, email, password, passwordConfirmation);
+                signup(name, email, password, passwordConfirmation, "", "");
 
                 Intent signComplete = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(signComplete);
@@ -60,8 +60,8 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void signup(String name, String email, String password, String passwordConfirmation) {
-        User user = new User(name, email, password, passwordConfirmation);
+    private void signup(String name, String email, String password, String passwordConfirmation, String uid, String provider) {
+        User user = new User(name, email, password, passwordConfirmation, uid, provider);
         Call<USignUpResult> SignupResultCall = network.getSignUpResult(user);
         SignupResultCall.enqueue(new Callback<USignUpResult>() {
             @Override

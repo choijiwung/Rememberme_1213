@@ -1,8 +1,14 @@
 package rememberme.io.rememberme.Trip.Results;
 
+import java.util.ArrayList;
+
+import rememberme.io.rememberme.Trip.Trip;
+
 /**
  * Created by JW on 2017-12-10.
  */
 
 public class TPageResult {
+    public String msg;
+    public ArrayList<Trip> arrayList = new ArrayList<>();
 }
