@@ -1,12 +1,14 @@
 package rememberme.io.rememberme.Trip;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by JW on 2017-12-10.
  */
 
-public class Trip {
+@SuppressWarnings("serial")
+public class Trip implements Serializable {
     private int tid;
     private String title;
     private String description;

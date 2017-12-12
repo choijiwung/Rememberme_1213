@@ -23,6 +23,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     APINetwork network;
 
     Context context;
+
     public MainPagerAdapter(Context context, FragmentManager fm, int tabCount) {
         super(fm);
         this.context = context; // context 추가 12/11 05시 11분
@@ -32,7 +33,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-    // 탭 위치에 따라서 인플레이터
+        // 탭 위치에 따라서 인플레이터
         switch (position) {
             case 0:
                 LeftMainFragment leftMainFragment = new LeftMainFragment();
@@ -48,12 +49,13 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
                         TIndexResult result = response.body();
                         size = result.arrayList.size(); // 결과물의 size 여기서는 trip 사이즈를 알고,
                     }
+
                     @Override
                     public void onFailure(Call<TIndexResult> call, Throwable t) {
                     }
                 });
 
-                if(size != 0) { // trip의 사이즈가 0이 아니라면
+                if (size != 0) { // trip의 사이즈가 0이 아니라면
                     RightMainFragment rightMainFragment = new RightMainFragment();
                     return rightMainFragment;
                 } else { // trip의 사이즈가 0이면

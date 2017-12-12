@@ -47,4 +47,10 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        adapter.getItem(1);
+    }
 }
