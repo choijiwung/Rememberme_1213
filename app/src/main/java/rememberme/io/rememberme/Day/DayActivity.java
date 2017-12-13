@@ -1,5 +1,6 @@
 package rememberme.io.rememberme.Day;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import rememberme.io.rememberme.R;
+import rememberme.io.rememberme.Spot.SpotActivity;
 
 public class DayActivity extends AppCompatActivity {
 
@@ -20,6 +22,15 @@ public class DayActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day);
+        Button btndone = (Button) findViewById(R.id.btndone);
+        btndone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SpotActivity.class);
+                startActivity(intent);
+            }
+        });
+
         LinearLayout dayListContainer =  (LinearLayout) findViewById(R.id.llDayListContainer);
         for(int i = 0 ; i<3; i++) {
             appendItemView(dayListContainer);
