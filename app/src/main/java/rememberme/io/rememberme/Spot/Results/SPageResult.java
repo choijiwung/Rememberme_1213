@@ -10,5 +10,5 @@ import rememberme.io.rememberme.Spot.Spot;
 
 public class SPageResult {
     public String msg;
-    public ArrayList<Spot> arrayList = new ArrayList<>();
+    public ArrayList<Spot> result;
 }

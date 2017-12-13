@@ -8,6 +8,7 @@ import rememberme.io.rememberme.Day.Day;
 import rememberme.io.rememberme.Day.Results.DCreateResult;
 import rememberme.io.rememberme.Day.Results.DDeleteResult;
 import rememberme.io.rememberme.Day.Results.DIndexResult;
+import rememberme.io.rememberme.Day.Results.DPageResult;
 import rememberme.io.rememberme.Day.Results.DShowResult;
 import rememberme.io.rememberme.Day.Results.DUpdateResult;
 import rememberme.io.rememberme.Spot.Results.SCreateResult;
@@ -73,6 +74,9 @@ public interface APINetwork {
 //    Day
     @GET("/trips/{tid}/days")
     Call<DIndexResult> getDIndexResult(@Header("token") String token, @Path("tid") int tid);
+
+    @GET("/trips/{tid}/days/page/{page}")
+    Call<DPageResult> getDPageResult(@Header("token") String token, @Path("tid") int tid, @Path("page") int page);
 
     @POST("/trips/{tid}/days")
     Call<DCreateResult> getDCreateResult(@Header("token") String token, @Body Day day, @Path("tid") int tid);

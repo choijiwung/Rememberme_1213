@@ -1,0 +1,28 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="rememberme.io.rememberme.Day.DayNoFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/day_no_fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/colorFab"
+        android:src="@drawable/ic_add_black_24dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/day_no_fab"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:text="@string/day_no_message"
+        android:textSize="18dp" />
+
+
+</RelativeLayout>

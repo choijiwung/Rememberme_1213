@@ -10,5 +10,5 @@ import rememberme.io.rememberme.Trip.Trip;
 
 public class TPageResult {
     public String msg;
-    public ArrayList<Trip> arrayList = new ArrayList<>();
+    public ArrayList<Trip> result;
 }

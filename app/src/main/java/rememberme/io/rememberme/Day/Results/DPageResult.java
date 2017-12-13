@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import rememberme.io.rememberme.Day.Day;
 
 /**
- * Created by JW on 2017-12-10.
+ * Created by jongbong on 2017. 12. 13..
  */
 
-public class DIndexResult {
+public class DPageResult {
     public String msg;
     public ArrayList<Day> result;
 }

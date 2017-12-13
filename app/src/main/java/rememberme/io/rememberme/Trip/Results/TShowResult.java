@@ -8,5 +8,5 @@ import rememberme.io.rememberme.Trip.Trip;
 
 public class TShowResult {
     public String msg;
-    public Trip trip;
+    public Trip result;
 }

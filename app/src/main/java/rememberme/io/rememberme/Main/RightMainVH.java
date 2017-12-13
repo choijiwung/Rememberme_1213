@@ -14,13 +14,13 @@ import rememberme.io.rememberme.R;
 public class RightMainVH extends RecyclerView.ViewHolder {
 
     ImageView image;
-    TextView titleText;
-    TextView scheduleText;
+    TextView title;
+    TextView schedule;
 
     public RightMainVH(View view) {
         super(view);
         image = (ImageView) view.findViewById(R.id.right_main_item_image);
-        titleText = (TextView) view.findViewById(R.id.right_main_item_title);
-        scheduleText = (TextView) view.findViewById(R.id.right_main_item_schedule);
+        title = (TextView) view.findViewById(R.id.right_main_item_title);
+        schedule = (TextView) view.findViewById(R.id.right_main_item_schedule);
     }
 }

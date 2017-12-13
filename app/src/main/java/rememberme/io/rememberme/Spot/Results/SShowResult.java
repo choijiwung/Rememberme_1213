@@ -8,5 +8,5 @@ import rememberme.io.rememberme.Spot.Spot;
 
 public class SShowResult {
     public String msg;
-    public Spot spot;
+    public Spot result;
 }

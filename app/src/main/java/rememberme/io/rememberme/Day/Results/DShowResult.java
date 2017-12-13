@@ -8,5 +8,5 @@ import rememberme.io.rememberme.Day.Day;
 
 public class DShowResult {
     public String msg;
-    public Day day;
+    public Day result;
 }

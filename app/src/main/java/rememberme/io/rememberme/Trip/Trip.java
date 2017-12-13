@@ -9,19 +9,29 @@ import java.util.Date;
 
 @SuppressWarnings("serial")
 public class Trip implements Serializable {
-    private int tid;
+
+    private int thumb;
+    private int id;
     private String title;
     private String description;
     private String region;
     private Date start;
     private Date end;
 
-    public int getTid() {
-        return tid;
+    public int getThumb() {
+        return thumb;
     }
 
-    public void setTid(int tid) {
-        this.tid = tid;
+    public void setThumb(int thumb) {
+        this.thumb = thumb;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {

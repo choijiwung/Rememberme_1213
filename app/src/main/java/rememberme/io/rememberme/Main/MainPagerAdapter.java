@@ -8,12 +8,14 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.Network.Token;
 import rememberme.io.rememberme.Trip.Results.TIndexResult;
+import rememberme.io.rememberme.Trip.Trip;
 import retrofit2.Call;
 
 /**
@@ -24,12 +26,15 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     int size;
     int tabCount;
     APINetwork network;
-
     Context context;
+
+    LeftMainFragment leftMainFragment;
+    RightMainFragment rightMainFragment;
+    RightMainNoFragment rightMainNoFragment;
 
     public MainPagerAdapter(Context context, FragmentManager fm, int tabCount) {
         super(fm);
-        this.context = context; // context 추가 12/11 05시 11분
+        this.context = context;
         this.tabCount = tabCount;
         this.network = ApplicationController.getInstance().getApiNetwork();
     }
@@ -40,21 +45,21 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
         switch (position) {
             case 0:
                 Log.i("Main", "LeftPage inflate");
-                LeftMainFragment leftMainFragment = new LeftMainFragment();
+                updateLeftPage();
+                leftMainFragment = new LeftMainFragment();
                 return leftMainFragment;
             case 1:
                 Log.i("Main", "RightPage inflate");
-                changeRightPage();
+                updateRightPage();
                 Log.i("Main", "before check size : " + size);
-
+//                return updateRightPage();
                 if (size != 0) {
-                    RightMainFragment rightMainFragment = new RightMainFragment();
+                    rightMainFragment = new RightMainFragment();
                     return rightMainFragment;
                 } else {
-                    RightMainNoFragment rightMainNoFragment = new RightMainNoFragment();
+                    rightMainNoFragment = new RightMainNoFragment();
                     return rightMainNoFragment;
                 }
-
             default:
                 return null;
         }
@@ -68,24 +73,58 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(Object object) {
+//        if(object instanceof LeftMainFragment || object instanceof RightMainFragment || object instanceof  RightMainNoFragment) {
+//            return POSITION_NONE;
+//        }
         return super.getItemPosition(object);
+//        return POSITION_NONE;
     }
 
-    public void changeRightPage() {
-        Log.i("Main", "start changeRightPage");
+    public void updateLeftPage() {
+
+    }
+
+    public void updateRightPage() {
+        Log.i("Main", "start updateRightPage");
         Token token = new Token(context);
         final Call<TIndexResult> tIndexResultCall = network.getTIndexResult(token.getKey()); //가져온 토큰을 네트워크에 보내서 다시 받는다.
         Log.i("Main", "start sync network");
 
         try {
-            size = new Network().execute(tIndexResultCall).get().result.size();
+            ArrayList<Trip> newTrips = new Network().execute(tIndexResultCall).get().result;
+            size = newTrips.size();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
 
-        /*new Thread(new Runnable() {
+        Log.i("Main", "end of network");
+    }
+
+
+    private class Network extends AsyncTask<Call, Void, TIndexResult> {
+        @Override
+        protected TIndexResult doInBackground(Call... calls) {
+            try {
+                Call<TIndexResult> tIndexResultCall = calls[0];
+                return tIndexResultCall.execute().body();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(TIndexResult tIndexResult) {
+            Log.i("Main", "before end network size : " + size);
+        }
+    }
+
+}
+
+
+/*new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -112,26 +151,3 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
                 Log.i("Main", "fail : " + t.getMessage());
             }
         });*/
-
-        Log.i("Main", "end of network");
-    }
-
-    private class Network extends AsyncTask<Call, Void, TIndexResult> {
-        @Override
-        protected TIndexResult doInBackground(Call... calls) {
-            try {
-                Call<TIndexResult> tIndexResultCall = calls[0];
-                return tIndexResultCall.execute().body();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(TIndexResult tIndexResult) {
-            size = tIndexResult.result.size();
-            Log.i("Main", "before end network size : " + size);
-        }
-    }
-}

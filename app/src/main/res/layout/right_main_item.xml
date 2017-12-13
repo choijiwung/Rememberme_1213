@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="315dp"
+    android:layout_height="330dp"
     android:layout_marginLeft="29.5dp"
     android:layout_marginRight="29.5dp"
     android:layout_marginTop="21dp">
@@ -34,8 +34,8 @@
 
     <ImageView
         android:layout_width="100dp"
-        android:layout_height="5dp"
-        android:layout_below="@+id/right_main_item_schedule"
+        android:layout_height="3dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:background="#00bbdc" />
 

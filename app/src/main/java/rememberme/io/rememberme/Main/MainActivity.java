@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
 
+import rememberme.io.rememberme.Network.APINetwork;
+import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.R;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,11 +16,14 @@ public class MainActivity extends AppCompatActivity {
     TabLayout tabLayout;
     ViewPager viewPager;
     MainPagerAdapter adapter;
+    APINetwork network;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        network = ApplicationController.getInstance().getApiNetwork();
 
         tabLayout = (TabLayout) findViewById(R.id.main_tab);
         viewPager = (ViewPager) findViewById(R.id.main_viewpager);
@@ -54,7 +59,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Toast.makeText(this, "onResume Start", Toast.LENGTH_SHORT).show();
+//        adapter.updateLeftPage();
+        adapter.updateRightPage();
         adapter.notifyDataSetChanged();
         Log.i("Main", "resume check size : " + adapter.size);
     }
+
 }
