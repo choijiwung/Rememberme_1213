@@ -19,7 +19,7 @@ public class RightMainActivity extends AppCompatActivity {
         LinearLayout actionbar_linear = (LinearLayout) findViewById(R.id.actionbar_linear);
         rightMainFragment = new RightMainFragment();
         leftMainFragment = new LeftMainFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.main_container, leftMainFragment).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.main_container, rightMainFragment).commit();
 
         // 이제 탭버튼을 추가
 
@@ -32,10 +32,11 @@ public class RightMainActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 Fragment selected = null;
-                if(position==1){
-                    selected = leftMainFragment;
-                }else if (position == 0) {
+                if(position==0){
                     selected = rightMainFragment;
+
+                }else if (position == 1) {
+                    selected = leftMainFragment;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_container,selected).commit(); // 이미 선택되었기 때문에, replace를 사용하며, 뜻은 container 안에 선택된 selected를 넣어주라
             }

@@ -43,22 +43,24 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     public synchronized Fragment getItem(int position) {
         Log.i("Main", "start inflate tab fragment");
         switch (position) {
-            case 1:
-                Log.i("Main", "LeftPage inflate");
-                updateLeftPage();
-                leftMainFragment = new LeftMainFragment();
-                return leftMainFragment;
             case 0:
-                Log.i("Main", "RightPage inflate");
-                updateRightPage();
-                Log.i("Main", "before check size : " + size);
+//                Log.i("Main", "LeftPage inflate");
+//                updateLeftPage();
+                rightMainNoFragment = new RightMainNoFragment();
+                return rightMainNoFragment;
+
+            case 1:
+//                Log.i("Main", "RightPage inflate");
+//                updateRightPage();
+//                Log.i("Main", "before check size : " + size);
 //                return updateRightPage();
 //                if (size != 0) {
 //                    rightMainFragment = new RightMainFragment();
 //                    return rightMainFragment;
 //                } else {
-                    rightMainNoFragment = new RightMainNoFragment();
-                    return rightMainNoFragment;
+                leftMainFragment = new LeftMainFragment();
+                return leftMainFragment;
+
 //                }
             default:
                 return null;

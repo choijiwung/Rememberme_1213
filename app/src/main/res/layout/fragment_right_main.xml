@@ -15,11 +15,11 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-
             android:layout_marginTop="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginLeft="8dp"
-            android:src="@drawable/gaudi"/>
+            android:src="@drawable/gaudi"
+            android:clickable="true"/>
         <TextView
             android:id="@+id/TextView"
             android:layout_width="wrap_content"

@@ -1,5 +1,6 @@
 package rememberme.io.rememberme.Main;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -10,9 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+import rememberme.io.rememberme.Day.DayActivity;
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.Network.Token;
@@ -63,6 +66,15 @@ public class RightMainFragment extends Fragment {
 //
 //        recyclerView = (RecyclerView) view.findViewById(R.id.right_main_recycler);
         RecyclerView.LayoutManager manager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
+        // 이미지 눌렀을 때 장소 스팟입력
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ToDayActivity = new Intent(getContext(), DayActivity.class);
+                startActivity(ToDayActivity);
+            }
+        });
        // recyclerView.setLayoutManager(manager);
 
 //        adapter = new RightMainAdapter(getContext(), arrayList);
