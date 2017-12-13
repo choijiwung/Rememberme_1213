@@ -9,11 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import rememberme.io.rememberme.Main.RightMainActivity;
 import rememberme.io.rememberme.Network.APINetwork;
 import rememberme.io.rememberme.Network.ApplicationController;
 import rememberme.io.rememberme.Network.Token;
@@ -64,11 +64,15 @@ public class TripActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (trip != null) {
-                    trip(title.getText().toString(), region.getText().toString(), description.getText().toString());
-                } else {
-                    Toast.makeText(TripActivity.this, "날짜를 선택해주세요.", Toast.LENGTH_SHORT).show();
-                }
+
+                Intent toRightMainActivity = new Intent(getApplicationContext(), RightMainActivity.class);
+                startActivity(toRightMainActivity);
+                finish();
+//                if (trip != null) {
+//                    trip(title.getText().toString(), region.getText().toString(), description.getText().toString());
+//                } else {
+//                    Toast.makeText(TripActivity.this, "날짜를 선택해주세요.", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
     }

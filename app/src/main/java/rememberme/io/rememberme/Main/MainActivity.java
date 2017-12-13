@@ -28,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.main_tab);
         viewPager = (ViewPager) findViewById(R.id.main_viewpager);
 
-        tabLayout.addTab(tabLayout.newTab().setText("현재여행"));
         tabLayout.addTab(tabLayout.newTab().setText("여행목록"));
+        tabLayout.addTab(tabLayout.newTab().setText("현재여행"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

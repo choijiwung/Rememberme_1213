@@ -26,7 +26,8 @@
         <activity android:name=".Trip.TripActivity" />
         <activity android:name=".Trip.TripCalendarActivity" />
         <activity android:name=".Day.DayActivity" />
-        <activity android:name=".Spot.SpotActivity"></activity>
+        <activity android:name=".Spot.SpotActivity" />
+        <activity android:name=".Main.RightMainActivity"></activity>
     </application>
 
 </manifest>

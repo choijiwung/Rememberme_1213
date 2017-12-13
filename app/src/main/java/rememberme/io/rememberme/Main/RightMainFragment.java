@@ -1,6 +1,5 @@
 package rememberme.io.rememberme.Main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -20,7 +19,6 @@ import rememberme.io.rememberme.Network.Token;
 import rememberme.io.rememberme.R;
 import rememberme.io.rememberme.Trip.Results.TIndexResult;
 import rememberme.io.rememberme.Trip.Trip;
-import rememberme.io.rememberme.Trip.TripActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,19 +51,19 @@ public class RightMainFragment extends Fragment {
 
         network = ApplicationController.getInstance().getApiNetwork();
 
-        fab = (FloatingActionButton) view.findViewById(R.id.right_main_fab);
-
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getActivity(), TripActivity.class));
-            }
-        });
-
-        recyclerView = (RecyclerView) view.findViewById(R.id.right_main_recycler);
+//        fab = (FloatingActionButton) view.findViewById(R.id.right_main_fab);
+//
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                // Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(getActivity(), TripActivity.class));
+//            }
+//        });
+//
+//        recyclerView = (RecyclerView) view.findViewById(R.id.right_main_recycler);
         RecyclerView.LayoutManager manager = new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(manager);
+       // recyclerView.setLayoutManager(manager);
 
 //        adapter = new RightMainAdapter(getContext(), arrayList);
 //        recyclerView.setAdapter(adapter);
@@ -87,7 +85,7 @@ public class RightMainFragment extends Fragment {
                     TIndexResult indexResult = response.body();
 
                     adapter = new RightMainAdapter(getContext(), indexResult.result);
-                    recyclerView.setAdapter(adapter);
+                   //recyclerView.setAdapter(adapter);
                 } else {
                     Log.i("Trip", "Fail / code : " + response.code());
                 }
